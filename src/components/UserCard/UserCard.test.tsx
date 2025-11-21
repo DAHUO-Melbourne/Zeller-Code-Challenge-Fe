@@ -4,7 +4,7 @@ import { UserCard, UserCardProps } from './UserCard';
 const renderUserCard = (props?: Partial<UserCardProps>) => {
   const defaultProps: UserCardProps = {
     name: 'John Smith',
-    role: 'Admin',
+    role: 'ADMIN',
   };
 
   return render(<UserCard {...defaultProps} {...props} />);

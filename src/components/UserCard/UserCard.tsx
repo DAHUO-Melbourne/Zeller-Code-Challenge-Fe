@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import { toCapitalCase } from '../../utils/formatter';
+import { UserRole } from '../../types/customer';
 
 export interface UserCardProps {
   name: string;
-  role: 'Admin' | 'Manager';
+  role: UserRole;
   avatarUrl?: string;
 }
 
@@ -57,7 +59,7 @@ export const UserCard: React.FC<UserCardProps> = ({ name, role }) => {
       <Avatar>{firstLetter}</Avatar>
       <UserInfo>
         <NameLabel>{name}</NameLabel>
-        <RoleLabel>{role}</RoleLabel>
+        <RoleLabel>{toCapitalCase(role)}</RoleLabel>
       </UserInfo>
     </Card>
   );

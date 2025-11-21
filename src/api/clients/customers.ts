@@ -1,7 +1,6 @@
 import { API, graphqlOperation } from 'aws-amplify';
 import { ListZellerCustomers } from '../graphql-query/queries';
-
-export type UserRole = 'ADMIN' | 'MANAGER';
+import { UserRole } from '../../types/customer';
 
 export interface Customer {
   id: string;
@@ -10,7 +9,9 @@ export interface Customer {
 }
 
 interface ListCustomersResponse {
-  listZellerCustomers: Customer[];
+  listZellerCustomers: {
+    items: Customer[];
+  };
 }
 
 export async function fetchCustomers(): Promise<Customer[]> {
@@ -18,5 +19,5 @@ export async function fetchCustomers(): Promise<Customer[]> {
     data: ListCustomersResponse;
   };
 
-  return result.data.listZellerCustomers;
+  return result.data.listZellerCustomers.items ?? [];
 }
