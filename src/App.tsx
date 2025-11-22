@@ -20,9 +20,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <PageWrapper>
-        <PageTitle>Zeller Customer Management Portal</PageTitle>
-        <main>
+      <main>
+        <PageWrapper>
+          <PageTitle>Zeller Customer Management Portal</PageTitle>
           <PageSection>
             <RadioGroup
               options={ROLE_OPTIONS}
@@ -36,8 +36,8 @@ function App() {
             <SectionHeader title={`${toCapitalCase(selectedRole)} Users`} />
             <CustomersList selectedRole={selectedRole} />
           </PageSection>
-        </main>
-      </PageWrapper>
+        </PageWrapper>
+      </main>
     </ThemeProvider>
   );
 }

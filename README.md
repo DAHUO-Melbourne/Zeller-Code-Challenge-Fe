@@ -73,4 +73,3 @@ npm run test:coverage
 - Add e2e tests using `Playwright` or `Cypress`
 - Add visual testing using `Chromatic` or `Percy`
 - Use `React-Query` to save the customers list returned from aws and graphql in **Cache**, which can save performance. (While it's not necessary at current stage for there is only one page)
-- Add multiple .env files such as `.env.local-au`, `.env.local-ca`, `.env.local-eu`, `.env.local-dev`, `.env.local-sbox`, `.env.local-stg` to separate different deploy environments
