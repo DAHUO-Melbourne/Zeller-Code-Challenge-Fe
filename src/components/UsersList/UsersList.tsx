@@ -25,7 +25,6 @@ export const UsersList: FC<UsersListProps> = ({ selectedRole }) => {
   }, []);
 
   const filteredCustomers = useMemo(() => {
-    if (!selectedRole) return customers;
     return customers.filter((c) => c.role === selectedRole);
   }, [customers, selectedRole]);
 

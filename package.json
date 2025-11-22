@@ -25,11 +25,27 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "prepare": "husky"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/src/theme/",
+      "/src/types/",
+      "/src/api/"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/index.tsx",
+      "!src/**/*.test.{ts,tsx}"
+    ],
+    "coverageReporters": ["text", "lcov"],
+    "transformIgnorePatterns": ["/node_modules/(?!axios|@aws-amplify)"]
+
   },
   "eslintConfig": {
     "extends": [
