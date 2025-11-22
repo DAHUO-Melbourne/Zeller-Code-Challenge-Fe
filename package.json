@@ -30,7 +30,7 @@
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
     "format:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "prepare": "husky"
+    "prepare": "npx husky install"
   },
   "jest": {
     "coveragePathIgnorePatterns": [
