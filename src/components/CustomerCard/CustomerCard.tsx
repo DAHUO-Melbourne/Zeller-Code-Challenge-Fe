@@ -6,7 +6,6 @@ import { CustomerRole } from 'types/customer';
 export interface CustomerCardProps {
   name: string;
   role: CustomerRole;
-  avatarUrl?: string;
 }
 
 const Card = styled.div`

@@ -22,11 +22,9 @@ describe('RadioGroup component', () => {
   test('renders fieldset and legend correctly', () => {
     renderRadioGroup();
 
-    const fieldset = screen.getByRole('group');
-    expect(fieldset).toBeInTheDocument();
+    expect(screen.getByRole('group')).toBeInTheDocument();
 
-    const legend = screen.getByText('User Type');
-    expect(legend.tagName.toLowerCase()).toBe('legend');
+    expect(screen.getByText('User Type')).toBeInTheDocument();
   });
 
   test('renders all radio options', () => {

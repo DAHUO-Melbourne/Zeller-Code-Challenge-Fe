@@ -54,11 +54,7 @@ export const RadioSelector: React.FC<RadioSelectorProps> = ({
   const id = `${name}-${value}`;
 
   return (
-    <LabelWrapper
-      htmlFor={id}
-      checked={checked}
-      data-testid={`radio-selector-${name}-${value}`}
-    >
+    <LabelWrapper htmlFor={id} checked={checked}>
       <Radio
         id={id}
         type='radio'

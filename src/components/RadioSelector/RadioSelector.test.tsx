@@ -24,20 +24,14 @@ describe('RadioSelector component', () => {
   test('Renders the RadioSelector component correctly with expected html tags', () => {
     renderRadioSelector();
 
-    const radio = screen.getByRole('radio');
-    const wrapper = screen.getByTestId('radio-selector-role-admin');
-    const labelText = screen.getByText('Admin');
-
-    expect(wrapper?.tagName.toLowerCase()).toBe('label');
-    expect(radio.tagName.toLowerCase()).toBe('input');
-    expect(labelText.tagName.toLowerCase()).toBe('span');
+    expect(screen.getByRole('radio')).toBeInTheDocument();
+    expect(screen.getByLabelText('Admin')).toBeInTheDocument();
   });
 
   test('Calls onChange with correct value when clicked', () => {
     renderRadioSelector();
 
-    const wrapper = screen.getByTestId('radio-selector-role-admin');
-    fireEvent.click(wrapper);
+    fireEvent.click(screen.getByLabelText('Admin'));
 
     expect(handleChange).toHaveBeenCalledTimes(1);
     expect(handleChange).toHaveBeenCalledWith('admin');

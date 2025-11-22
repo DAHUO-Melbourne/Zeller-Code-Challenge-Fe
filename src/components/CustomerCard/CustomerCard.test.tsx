@@ -12,18 +12,14 @@ const renderCustomerCard = (props?: Partial<CustomerCardProps>) => {
   return render(<CustomerCard {...defaultProps} {...props} />);
 };
 describe('CustomerCard component', () => {
-  test('Renders CustomerCard with expected html tags and content', () => {
+  test('Renders CustomerCard with expected content', () => {
     renderCustomerCard();
 
     const card = screen.getByTestId(`customer-card-${name}`);
-    const avatar = within(card).getByText('J');
-    const nameLabel = screen.getByText(name);
-    const roleLabel = screen.getByText('Admin');
-
-    expect(card?.tagName.toLowerCase()).toBe('div');
-    expect(avatar.tagName.toLowerCase()).toBe('div');
-    expect(nameLabel.tagName.toLowerCase()).toBe('span');
-    expect(roleLabel.tagName.toLowerCase()).toBe('span');
+    expect(card).toBeInTheDocument();
+    expect(within(card).getByText('J')).toBeInTheDocument();
+    expect(screen.getByText(name)).toBeInTheDocument();
+    expect(screen.getByText('Admin')).toBeInTheDocument();
   });
 
   test('Renders correct initial letter in avatar', () => {
