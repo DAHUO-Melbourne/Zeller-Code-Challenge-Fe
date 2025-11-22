@@ -1,5 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '../../test/utils/test-utils';
 import { SectionHeader } from './SectionHeader';
+import { theme } from '../../theme/theme';
 
 const renderSectionHeader = () => render(<SectionHeader title='User Types' />);
 
@@ -16,8 +17,8 @@ describe('SectionHeader component', () => {
       renderSectionHeader();
       const wrapper = screen.getByTestId('SectionHeader-wrapper-User Types');
       expect(wrapper).toHaveStyle(`
-        padding: 24px 0;
-        border-top: 1px solid #e5e7eb;
+        padding: ${theme.spacings.lg} 0;
+        border-top: 1px solid ${theme.colors.border.light};
       `);
     });
 
@@ -28,9 +29,9 @@ describe('SectionHeader component', () => {
         level: 2,
       });
       expect(title).toHaveStyle(`
-        font-size: 16px;
-        font-weight: 600;
-        color: #1f2937;
+        font-size: ${theme.fontSizes.lg};
+        font-weight: ${theme.fontWeights.semiBold};
+        color: ${theme.colors.text.primary};
       `);
     });
   });

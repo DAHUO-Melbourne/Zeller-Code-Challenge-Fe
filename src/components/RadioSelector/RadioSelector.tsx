@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from 'react';
 
 export interface RadioSelectorProps {
   label: string;
@@ -11,14 +12,21 @@ export interface RadioSelectorProps {
 const Wrapper = styled.label<{ checked: boolean }>`
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
+  gap: ${({ theme }) => theme.spacings.md};
+  padding: ${({ theme }) => theme.spacings.sm}
+    ${({ theme }) => theme.spacings.md};
   cursor: pointer;
-  border-radius: 8px;
-  background-color: ${({ checked }) => (checked ? '#DBEAFE' : 'transparent')};
+  border-radius: ${({ theme }) => theme.borderRadius.md};
+  background-color: ${({ checked, theme }) =>
+    checked
+      ? theme.colors.state.selected
+      : theme.colors.background.transparent};
   transition: background-color 0.15s ease;
   &:hover {
-    background-color: ${({ checked }) => (checked ? '#BFDBFE' : '#EFF6FF')};
+    background-color: ${({ checked, theme }) =>
+      checked
+        ? theme.colors.state.hoverSelected
+        : theme.colors.state.hoverPale};
   }
 `;
 
@@ -30,9 +38,10 @@ const Radio = styled.input`
 `;
 
 const LabelText = styled.span<{ checked: boolean }>`
-  font-size: 14px;
-  color: #1f2937;
-  font-weight: ${({ checked }) => (checked ? 600 : 400)};
+  font-size: ${({ theme }) => theme.fontSizes.sm};
+  color: ${({ theme }) => theme.colors.text.primary};
+  font-weight: ${({ checked, theme }) =>
+    checked ? theme.fontWeights.semiBold : theme.fontWeights.regular};
 `;
 
 export const RadioSelector: React.FC<RadioSelectorProps> = ({
@@ -45,24 +54,16 @@ export const RadioSelector: React.FC<RadioSelectorProps> = ({
   const id = `${name}-${value}`;
 
   return (
-    <Wrapper
-      checked={checked}
-      htmlFor={id}
-      data-testid={`radio-selector-${name}-${value}`}
-    >
+    <Wrapper checked={checked} data-testid={`radio-selector-${name}-${value}`}>
       <Radio
         id={id}
         type='radio'
         value={value}
         checked={checked}
         name={name}
-        aria-checked={checked}
-        aria-labelledby={`${id}-label`}
         onChange={() => onChange(value)}
       />
-      <LabelText id={`${id}-label`} checked={checked}>
-        {label}
-      </LabelText>
+      <LabelText checked={checked}>{label}</LabelText>
     </Wrapper>
   );
 };

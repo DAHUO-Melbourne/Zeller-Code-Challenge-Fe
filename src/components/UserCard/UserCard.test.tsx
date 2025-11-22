@@ -1,25 +1,27 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, within } from '../../test/utils/test-utils';
 import { UserCard, UserCardProps } from './UserCard';
+import { theme } from '../../theme/theme';
+
+const name = 'John Smith';
 
 const renderUserCard = (props?: Partial<UserCardProps>) => {
   const defaultProps: UserCardProps = {
-    name: 'John Smith',
+    name,
     role: 'ADMIN',
   };
 
   return render(<UserCard {...defaultProps} {...props} />);
 };
-
 describe('UserCard component', () => {
   test('Renders UserCard with expected html tags and content', () => {
     renderUserCard();
 
-    const card = screen.getByTestId('user-card-John Smith');
+    const card = screen.getByTestId(`user-card-${name}`);
     const avatar = within(card).getByText('J');
-    const nameLabel = screen.getByText('John Smith');
+    const nameLabel = screen.getByText(name);
     const roleLabel = screen.getByText('Admin');
 
-    expect(card.tagName.toLowerCase()).toBe('div');
+    expect(card?.tagName.toLowerCase()).toBe('div');
     expect(avatar.tagName.toLowerCase()).toBe('div');
     expect(nameLabel.tagName.toLowerCase()).toBe('span');
     expect(roleLabel.tagName.toLowerCase()).toBe('span');
@@ -38,48 +40,54 @@ describe('UserCard component', () => {
     test('Renders Card with expected layout styles', () => {
       renderUserCard();
 
-      const card = screen.getByTestId('user-card-John Smith');
+      const card = screen.getByTestId(`user-card-${name}`);
 
       expect(card).toHaveStyle('display: flex');
       expect(card).toHaveStyle('align-items: center');
-      expect(card).toHaveStyle('gap: 8px');
-      expect(card).toHaveStyle('padding: 12px 0');
-      expect(card).toHaveStyle('background-color: #ffffff');
-      expect(card).toHaveStyle('border-radius: 10px');
+      expect(card).toHaveStyle(`gap: ${theme.spacings.xs}`);
+      expect(card).toHaveStyle(
+        `padding: ${theme.spacings.md} ${theme.spacings.md}`,
+      );
+      expect(card).toHaveStyle(
+        `background-color: ${theme.colors.background.default}`,
+      );
+      expect(card).toHaveStyle(`border-radius: ${theme.borderRadius.lg}`);
       expect(card).toHaveStyle('cursor: default');
     });
 
     test('Renders Avatar with expected styles', () => {
       renderUserCard();
 
-      const card = screen.getByTestId('user-card-John Smith');
+      const card = screen.getByTestId(`user-card-${name}`);
       const avatar = within(card).getByText('J');
 
       expect(avatar).toHaveStyle('width: 36px');
       expect(avatar).toHaveStyle('height: 36px');
-      expect(avatar).toHaveStyle('border-radius: 8px');
-      expect(avatar).toHaveStyle('background-color: #DBEAFE');
+      expect(avatar).toHaveStyle(`border-radius: ${theme.borderRadius.md}`);
+      expect(avatar).toHaveStyle(
+        `background-color: ${theme.colors.state.selected}`,
+      );
       expect(avatar).toHaveStyle('display: flex');
       expect(avatar).toHaveStyle('justify-content: center');
       expect(avatar).toHaveStyle('align-items: center');
-      expect(avatar).toHaveStyle('color: #1d4ed8');
-      expect(avatar).toHaveStyle('font-weight: 600');
-      expect(avatar).toHaveStyle('font-size: 16px');
+      expect(avatar).toHaveStyle(`color: ${theme.colors.brand.primary}`);
+      expect(avatar).toHaveStyle(`font-weight: ${theme.fontWeights.semiBold}`);
+      expect(avatar).toHaveStyle(`font-size: ${theme.fontSizes.lg}`);
     });
 
     test('Renders NameLabel and RoleLabel with expected typography styles', () => {
       renderUserCard();
 
-      const nameLabel = screen.getByText('John Smith');
+      const nameLabel = screen.getByText(name);
       const roleLabel = screen.getByText('Admin');
 
-      expect(nameLabel).toHaveStyle('font-size: 15px');
-      expect(nameLabel).toHaveStyle('font-weight: 500');
-      expect(nameLabel).toHaveStyle('color: #1f2937');
+      expect(nameLabel).toHaveStyle(`font-size: ${theme.fontSizes.md}`);
+      expect(nameLabel).toHaveStyle(`font-weight: ${theme.fontWeights.medium}`);
+      expect(nameLabel).toHaveStyle(`color: ${theme.colors.text.primary}`);
 
-      expect(roleLabel).toHaveStyle('font-size: 12px');
-      expect(roleLabel).toHaveStyle('font-weight: 500');
-      expect(roleLabel).toHaveStyle('color: #6b7280');
+      expect(roleLabel).toHaveStyle(`font-size: ${theme.fontSizes.xs}`);
+      expect(roleLabel).toHaveStyle(`font-weight: ${theme.fontWeights.medium}`);
+      expect(roleLabel).toHaveStyle(`color: ${theme.colors.text.secondary}`);
     });
   });
 });

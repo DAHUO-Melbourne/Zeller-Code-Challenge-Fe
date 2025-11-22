@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '../../test/utils/test-utils';
 import { UsersList } from './UsersList';
 import { fetchCustomers } from '../../api/clients/customers';
 import { mockCustomers } from '../../test/mocks/customerMocks';

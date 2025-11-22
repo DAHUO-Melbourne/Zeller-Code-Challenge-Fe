@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from 'react';
 import { toCapitalCase } from '../../utils/formatter';
 import { UserRole } from '../../types/customer';
 
@@ -11,12 +12,14 @@ export interface UserCardProps {
 const Card = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: ${({ theme }) => theme.spacings.xs};
   justify-content: start;
-  padding: 12px 0;
-  background-color: #ffffff;
-  border-radius: 10px;
+  padding: ${({ theme }) => theme.spacings.md}
+    ${({ theme }) => theme.spacings.md};
+  background-color: ${({ theme }) => theme.colors.background.default};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
   cursor: default;
+  margin-bottom: ${({ theme }) => theme.spacings.md};
 `;
 
 const UserInfo = styled.div`
@@ -29,26 +32,26 @@ const UserInfo = styled.div`
 const Avatar = styled.div`
   width: 36px;
   height: 36px;
-  border-radius: 8px;
-  background-color: #dbeafe;
+  border-radius: ${({ theme }) => theme.borderRadius.md};
+  background-color: ${({ theme }) => theme.colors.state.selected};
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #1d4ed8;
-  font-weight: 600;
-  font-size: 16px;
+  color: ${({ theme }) => theme.colors.brand.primary};
+  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+  font-size: ${({ theme }) => theme.fontSizes.lg};
 `;
 
 const NameLabel = styled.span`
-  font-size: 15px;
-  font-weight: 500;
-  color: #1f2937;
+  font-size: ${({ theme }) => theme.fontSizes.md};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
+  color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 const RoleLabel = styled.span`
-  font-size: 12px;
-  color: #6b7280;
-  font-weight: 500;
+  font-size: ${({ theme }) => theme.fontSizes.xs};
+  color: ${({ theme }) => theme.colors.text.secondary};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
 `;
 
 export const UserCard: React.FC<UserCardProps> = ({ name, role }) => {
