@@ -6,10 +6,10 @@ const getLabelWrapper = (label: string) => {
   return radioInput.parentElement;
 };
 
-jest.mock('./components/UsersList/UsersList', () => ({
-  UsersList: (props: any) => (
-    <div data-testid='mock-users-list' data-role={props.selectedRole}>
-      Mock UsersList
+jest.mock('./components/CustomersList/CustomersList', () => ({
+  CustomersList: (props: any) => (
+    <div data-testid='mock-customers-list' data-role={props.selectedRole}>
+      Mock CustomersList
     </div>
   ),
 }));
@@ -19,7 +19,7 @@ describe('App', () => {
     render(<App />);
 
     expect(
-      screen.getByRole('heading', { name: 'User Type' }),
+      screen.getByRole('heading', { name: 'User Types' }),
     ).toBeInTheDocument();
 
     const adminRadio = screen.getByLabelText('Admin');
@@ -30,7 +30,7 @@ describe('App', () => {
     expect(
       screen.getByRole('heading', { name: 'Admin Users' }),
     ).toBeInTheDocument();
-    expect(screen.getByTestId('mock-users-list')).toHaveAttribute(
+    expect(screen.getByTestId('mock-customers-list')).toHaveAttribute(
       'data-role',
       'ADMIN',
     );
@@ -56,7 +56,7 @@ describe('App', () => {
       screen.getByRole('heading', { name: 'Manager Users' }),
     ).toBeInTheDocument();
 
-    expect(screen.getByTestId('mock-users-list')).toHaveAttribute(
+    expect(screen.getByTestId('mock-customers-list')).toHaveAttribute(
       'data-role',
       'MANAGER',
     );
@@ -85,7 +85,7 @@ describe('App', () => {
     expect(
       screen.getByRole('heading', { name: 'Admin Users' }),
     ).toBeInTheDocument();
-    expect(screen.getByTestId('mock-users-list')).toHaveAttribute(
+    expect(screen.getByTestId('mock-customers-list')).toHaveAttribute(
       'data-role',
       'ADMIN',
     );

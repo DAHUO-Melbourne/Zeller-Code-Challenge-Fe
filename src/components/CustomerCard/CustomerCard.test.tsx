@@ -1,22 +1,22 @@
 import { render, screen, within } from '../../test/utils/test-utils';
-import { UserCard, UserCardProps } from './UserCard';
+import { CustomerCard, CustomerCardProps } from './CustomerCard';
 import { theme } from '../../theme/theme';
 
 const name = 'John Smith';
 
-const renderUserCard = (props?: Partial<UserCardProps>) => {
-  const defaultProps: UserCardProps = {
+const renderCustomerCard = (props?: Partial<CustomerCardProps>) => {
+  const defaultProps: CustomerCardProps = {
     name,
     role: 'ADMIN',
   };
 
-  return render(<UserCard {...defaultProps} {...props} />);
+  return render(<CustomerCard {...defaultProps} {...props} />);
 };
-describe('UserCard component', () => {
-  test('Renders UserCard with expected html tags and content', () => {
-    renderUserCard();
+describe('CustomerCard component', () => {
+  test('Renders CustomerCard with expected html tags and content', () => {
+    renderCustomerCard();
 
-    const card = screen.getByTestId(`user-card-${name}`);
+    const card = screen.getByTestId(`customer-card-${name}`);
     const avatar = within(card).getByText('J');
     const nameLabel = screen.getByText(name);
     const roleLabel = screen.getByText('Admin');
@@ -28,9 +28,9 @@ describe('UserCard component', () => {
   });
 
   test('Renders correct initial letter in avatar', () => {
-    renderUserCard({ name: 'Adam Muller' });
+    renderCustomerCard({ name: 'Adam Muller' });
 
-    const card = screen.getByTestId('user-card-Adam Muller');
+    const card = screen.getByTestId('customer-card-Adam Muller');
     const avatar = within(card).getByText('A');
 
     expect(avatar).toBeInTheDocument();
@@ -38,9 +38,9 @@ describe('UserCard component', () => {
 
   describe('Styles', () => {
     test('Renders Card with expected layout styles', () => {
-      renderUserCard();
+      renderCustomerCard();
 
-      const card = screen.getByTestId(`user-card-${name}`);
+      const card = screen.getByTestId(`customer-card-${name}`);
 
       expect(card).toHaveStyle('display: flex');
       expect(card).toHaveStyle('align-items: center');
@@ -56,9 +56,9 @@ describe('UserCard component', () => {
     });
 
     test('Renders Avatar with expected styles', () => {
-      renderUserCard();
+      renderCustomerCard();
 
-      const card = screen.getByTestId(`user-card-${name}`);
+      const card = screen.getByTestId(`customer-card-${name}`);
       const avatar = within(card).getByText('J');
 
       expect(avatar).toHaveStyle('width: 36px');
@@ -76,7 +76,7 @@ describe('UserCard component', () => {
     });
 
     test('Renders NameLabel and RoleLabel with expected typography styles', () => {
-      renderUserCard();
+      renderCustomerCard();
 
       const nameLabel = screen.getByText(name);
       const roleLabel = screen.getByText('Admin');

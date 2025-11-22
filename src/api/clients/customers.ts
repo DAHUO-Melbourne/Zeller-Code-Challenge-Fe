@@ -1,11 +1,11 @@
 import { API, graphqlOperation } from 'aws-amplify';
 import { ListZellerCustomers } from '../graphql-query/queries';
-import { UserRole } from '../../types/customer';
+import { CustomerRole } from '../../types/customer';
 
 export interface Customer {
   id: string;
   name: string;
-  role: UserRole;
+  role: CustomerRole;
 }
 
 interface ListCustomersResponse {

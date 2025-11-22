@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import React from 'react';
 import { toCapitalCase } from '../../utils/formatter';
-import { UserRole } from '../../types/customer';
+import { CustomerRole } from '../../types/customer';
 
-export interface UserCardProps {
+export interface CustomerCardProps {
   name: string;
-  role: UserRole;
+  role: CustomerRole;
   avatarUrl?: string;
 }
 
@@ -22,7 +22,7 @@ const Card = styled.div`
   margin-bottom: ${({ theme }) => theme.spacings.md};
 `;
 
-const UserInfo = styled.div`
+const CustomerInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -54,16 +54,16 @@ const RoleLabel = styled.span`
   font-weight: ${({ theme }) => theme.fontWeights.medium};
 `;
 
-export const UserCard: React.FC<UserCardProps> = ({ name, role }) => {
+export const CustomerCard: React.FC<CustomerCardProps> = ({ name, role }) => {
   const firstLetter = name[0].toUpperCase();
 
   return (
-    <Card data-testid={`user-card-${name}`}>
+    <Card data-testid={`customer-card-${name}`}>
       <Avatar>{firstLetter}</Avatar>
-      <UserInfo>
+      <CustomerInfo>
         <NameLabel>{name}</NameLabel>
         <RoleLabel>{toCapitalCase(role)}</RoleLabel>
-      </UserInfo>
+      </CustomerInfo>
     </Card>
   );
 };

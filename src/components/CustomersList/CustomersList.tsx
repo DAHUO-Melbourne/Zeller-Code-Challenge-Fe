@@ -1,13 +1,13 @@
 import { FC, useEffect, useMemo, useState } from 'react';
-import { UserRole } from '../../types/customer';
+import { CustomerRole } from '../../types/customer';
 import { Customer, fetchCustomers } from '../../api/clients/customers';
-import { UserCard } from '../UserCard/UserCard';
+import { CustomerCard } from '../CustomerCard/CustomerCard';
 
-interface UsersListProps {
-  selectedRole: UserRole;
+interface CustomersListProps {
+  selectedRole: CustomerRole;
 }
 
-export const UsersList: FC<UsersListProps> = ({ selectedRole }) => {
+export const CustomersList: FC<CustomersListProps> = ({ selectedRole }) => {
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [error, setError] = useState('');
 
@@ -35,7 +35,7 @@ export const UsersList: FC<UsersListProps> = ({ selectedRole }) => {
   return (
     <>
       {filteredCustomers.map((item) => (
-        <UserCard name={item.name} role={item.role} key={item.id} />
+        <CustomerCard name={item.name} role={item.role} key={item.id} />
       ))}
     </>
   );

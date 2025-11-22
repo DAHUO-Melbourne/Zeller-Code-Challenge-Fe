@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '../../test/utils/test-utils';
-import { UsersList } from './UsersList';
+import { CustomersList } from './CustomersList';
 import { fetchCustomers } from '../../api/clients/customers';
 import { mockCustomers } from '../../test/mocks/customerMocks';
 
@@ -7,14 +7,14 @@ jest.mock('../../api/clients/customers');
 
 const mockFetchCustomers = fetchCustomers as jest.Mock;
 
-describe('UsersList Component', () => {
+describe('CustomersList Component', () => {
   beforeEach(() => {
     mockFetchCustomers.mockClear();
     mockFetchCustomers.mockResolvedValue(mockCustomers);
   });
 
-  test('Only renders MANAGER users when api returns data successfully', async () => {
-    render(<UsersList selectedRole='MANAGER' />);
+  test('Only renders MANAGER customers when api returns data successfully', async () => {
+    render(<CustomersList selectedRole='MANAGER' />);
 
     await waitFor(() => {
       expect(screen.getByText('Bob Johnson')).toBeInTheDocument();
@@ -28,7 +28,7 @@ describe('UsersList Component', () => {
   test('Renders error message when api returns error', async () => {
     mockFetchCustomers.mockRejectedValue(new Error('API failed'));
 
-    render(<UsersList selectedRole='MANAGER' />);
+    render(<CustomersList selectedRole='MANAGER' />);
 
     await waitFor(() => {
       expect(
