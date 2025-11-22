@@ -54,16 +54,18 @@ const RoleLabel = styled.span`
   font-weight: ${({ theme }) => theme.fontWeights.medium};
 `;
 
-export const CustomerCard: React.FC<CustomerCardProps> = ({ name, role }) => {
-  const firstLetter = name[0].toUpperCase();
+export const CustomerCard: React.FC<CustomerCardProps> = React.memo(
+  ({ name, role }) => {
+    const firstLetter = name[0].toUpperCase();
 
-  return (
-    <Card data-testid={`customer-card-${name}`}>
-      <Avatar>{firstLetter}</Avatar>
-      <CustomerInfo>
-        <NameLabel>{name}</NameLabel>
-        <RoleLabel>{toCapitalCase(role)}</RoleLabel>
-      </CustomerInfo>
-    </Card>
-  );
-};
+    return (
+      <Card data-testid={`customer-card-${name}`}>
+        <Avatar>{firstLetter}</Avatar>
+        <CustomerInfo>
+          <NameLabel>{name}</NameLabel>
+          <RoleLabel>{toCapitalCase(role)}</RoleLabel>
+        </CustomerInfo>
+      </Card>
+    );
+  },
+);

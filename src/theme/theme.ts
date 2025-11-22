@@ -44,6 +44,11 @@ export const theme = {
     md: '8px',
     lg: '10px',
   },
+
+  breakpoints: {
+    mobile: '640px',
+    tablet: '1024px',
+  },
 };
 
 export type Theme = typeof theme;
