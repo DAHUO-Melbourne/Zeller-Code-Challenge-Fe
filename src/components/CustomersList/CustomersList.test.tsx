@@ -1,7 +1,7 @@
-import { render, screen, waitFor } from '../../test/utils/test-utils';
+import { render, screen, waitFor } from 'test/utils/test-utils';
 import { CustomersList } from './CustomersList';
-import { fetchCustomers } from '../../api/clients/customers';
-import { mockCustomers } from '../../test/mocks/customerMocks';
+import { fetchCustomers } from 'api/clients/customers';
+import { mockCustomers } from 'test/mocks/customerMocks';
 
 jest.mock('../../api/clients/customers');
 

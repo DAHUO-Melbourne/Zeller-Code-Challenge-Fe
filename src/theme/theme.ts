@@ -22,22 +22,26 @@ export const theme = {
   },
 
   spacings: {
-    xs: '8px',
-    sm: '10px',
-    md: '12px',
-    lg: '24px',
+    xs: '0.25rem',
+    sm: '0.5rem',
+    md: '0.75rem',
+    lg: '1rem',
+    xl: '1.5rem',
   },
 
   fontSizes: {
-    xs: '12px',
-    sm: '14px',
-    md: '15px',
-    lg: '16px',
+    xs: '0.75rem',
+    sm: '0.875rem',
+    md: '1rem',
+    lg: '1.125rem',
+    xl: '1.25rem',
+    xxl: '1.5rem',
   },
   fontWeights: {
     regular: 400,
     medium: 500,
     semiBold: 600,
+    bold: 700,
   },
 
   borderRadius: {

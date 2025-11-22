@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import { RadioSelector } from '../RadioSelector/RadioSelector';
-import { CustomerRole } from '../../types/customer';
+import { CustomerRole } from 'types/customer';
 
 export interface RadioOption {
   label: string;

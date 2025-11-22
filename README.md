@@ -16,7 +16,7 @@ Run the following command in the project root directory to automatically switch 
 nvm use
 ```
 
-Required Version: 20.19.0
+Required Version: 24.11.1
 
 ### 1.2 API Key Configuration (Mandatory)
 

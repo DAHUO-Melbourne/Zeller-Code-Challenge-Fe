@@ -1,7 +1,7 @@
-import { render, screen, fireEvent } from '../../test/utils/test-utils';
+import { render, screen, fireEvent } from 'test/utils/test-utils';
 import { RadioGroup, RadioGroupProps } from './RadioGroup';
-import { CustomerRole } from '../../types/customer';
-import { ROLE_OPTIONS } from '../../constants/constants';
+import { CustomerRole } from 'types/customer';
+import { ROLE_OPTIONS } from 'constants/constants';
 
 const handleChange = jest.fn();
 

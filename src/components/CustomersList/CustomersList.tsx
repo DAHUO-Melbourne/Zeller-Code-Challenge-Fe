@@ -1,6 +1,6 @@
 import { FC, useEffect, useMemo, useState } from 'react';
-import { CustomerRole } from '../../types/customer';
-import { Customer, fetchCustomers } from '../../api/clients/customers';
+import { CustomerRole } from 'types/customer';
+import { Customer, fetchCustomers } from 'api/clients/customers';
 import { CustomerCard } from '../CustomerCard/CustomerCard';
 
 interface CustomersListProps {

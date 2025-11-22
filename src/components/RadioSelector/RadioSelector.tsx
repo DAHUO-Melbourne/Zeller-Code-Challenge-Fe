@@ -13,7 +13,7 @@ const LabelWrapper = styled.label<{ checked: boolean }>`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacings.md};
-  padding: ${({ theme }) => theme.spacings.sm}
+  padding: ${({ theme }) => theme.spacings.md}
     ${({ theme }) => theme.spacings.md};
   cursor: pointer;
   border-radius: ${({ theme }) => theme.borderRadius.md};

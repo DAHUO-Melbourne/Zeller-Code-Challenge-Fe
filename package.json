@@ -55,9 +55,13 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 4 chrome versions",
+      "last 4 edge versions",
+      "last 2 firefox versions",
+      "Safari >= 16",
+      "last 4 ChromeAndroid versions",
+      "last 1 Android versions",
+      "IOS >= 16"
     ],
     "development": [
       "last 1 chrome version",

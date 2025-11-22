@@ -1,4 +1,4 @@
-import { RadioOption } from '../components/RadioGroup/RadioGroup';
+import { RadioOption } from 'components/RadioGroup/RadioGroup';
 
 export const ROLE_OPTIONS: RadioOption[] = [
   {

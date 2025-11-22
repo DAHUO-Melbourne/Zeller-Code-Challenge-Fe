@@ -1,4 +1,4 @@
-import { Customer } from '../../api/clients/customers';
+import { Customer } from 'api/clients/customers';
 
 export const mockCustomers: Customer[] = [
   { id: '1', name: 'Alice Smith', role: 'ADMIN' },

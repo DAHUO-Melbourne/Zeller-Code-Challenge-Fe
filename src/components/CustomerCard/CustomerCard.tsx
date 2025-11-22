@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
-import { toCapitalCase } from '../../utils/formatter';
-import { CustomerRole } from '../../types/customer';
+import { toCapitalCase } from 'utils/formatter';
+import { CustomerRole } from 'types/customer';
 
 export interface CustomerCardProps {
   name: string;
