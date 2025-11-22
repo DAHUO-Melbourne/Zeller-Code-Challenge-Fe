@@ -9,7 +9,7 @@ export interface RadioSelectorProps {
   onChange: (value: string) => void;
 }
 
-const Wrapper = styled.label<{ checked: boolean }>`
+const LabelWrapper = styled.label<{ checked: boolean }>`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacings.md};
@@ -54,7 +54,11 @@ export const RadioSelector: React.FC<RadioSelectorProps> = ({
   const id = `${name}-${value}`;
 
   return (
-    <Wrapper checked={checked} data-testid={`radio-selector-${name}-${value}`}>
+    <LabelWrapper
+      htmlFor={id}
+      checked={checked}
+      data-testid={`radio-selector-${name}-${value}`}
+    >
       <Radio
         id={id}
         type='radio'
@@ -64,6 +68,6 @@ export const RadioSelector: React.FC<RadioSelectorProps> = ({
         onChange={() => onChange(value)}
       />
       <LabelText checked={checked}>{label}</LabelText>
-    </Wrapper>
+    </LabelWrapper>
   );
 };

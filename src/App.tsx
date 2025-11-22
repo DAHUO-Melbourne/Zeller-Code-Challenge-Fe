@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { RadioSelector, SectionHeader, CustomersList } from './components';
+import { SectionHeader, CustomersList } from './components';
 import { toCapitalCase } from './utils/formatter';
 import { CustomerRole } from './types/customer';
 import { PageWrapper } from './components/PageWrapper/PageWrapper';
+import { RadioGroup } from './components/RadioGroup/RadioGroup';
+import { ROLE_OPTIONS } from './constants/constants';
 
 function App() {
   const [selectedRole, setSelectedRole] = useState<CustomerRole>('ADMIN');
@@ -10,24 +12,16 @@ function App() {
   return (
     <PageWrapper>
       <main>
-        <section aria-labelledby='customer-type-header'>
-          <SectionHeader title='User Types' />
-          <RadioSelector
-            label='Admin'
-            value='ADMIN'
-            checked={selectedRole === 'ADMIN'}
-            onChange={() => setSelectedRole('ADMIN')}
-            name='customer-type'
-          />
-          <RadioSelector
-            label='Manager'
-            value='MANAGER'
-            checked={selectedRole === 'MANAGER'}
-            onChange={() => setSelectedRole('MANAGER')}
+        <section>
+          <RadioGroup
+            options={ROLE_OPTIONS}
+            title={<SectionHeader title='User Types' />}
+            selectedValue={selectedRole}
+            onChange={(value: CustomerRole) => setSelectedRole(value)}
             name='customer-type'
           />
         </section>
-        <section aria-labelledby='customer-list-header'>
+        <section>
           <SectionHeader title={`${toCapitalCase(selectedRole)} Users`} />
           <CustomersList selectedRole={selectedRole} />
         </section>
