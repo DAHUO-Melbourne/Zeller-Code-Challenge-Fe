@@ -16,6 +16,8 @@ describe('CustomersList Component', () => {
   test('Only renders MANAGER customers when api returns data successfully', async () => {
     render(<CustomersList selectedRole='MANAGER' />);
 
+    expect(screen.getByText('Loading, please wait')).toBeInTheDocument();
+
     await waitFor(() => {
       expect(screen.getByText('Bob Johnson')).toBeInTheDocument();
     });
@@ -29,6 +31,8 @@ describe('CustomersList Component', () => {
     mockFetchCustomers.mockRejectedValue(new Error('API failed'));
 
     render(<CustomersList selectedRole='MANAGER' />);
+
+    expect(screen.getByText('Loading, please wait')).toBeInTheDocument();
 
     await waitFor(() => {
       expect(
