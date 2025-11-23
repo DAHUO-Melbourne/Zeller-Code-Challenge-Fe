@@ -1,6 +1,6 @@
 # Zeller Coding Challenge - Frontend
 
-This is a pure frontend application built with React and Styled Components, designed to display and filter customer data, showcasing best practices in performance, responsiveness, and code quality.
+This is a pure frontend application built with React, Typescript and Styled Components, designed to display and filter customer data, showcasing best practices in performance, responsiveness, test coverage and code quality.
 
 ## 1. Local Environment Setup
 
